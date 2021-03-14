@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func presentWKWebViewViewController() {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let vc: ViewController = storyboard.instantiateViewController(identifier: "ViewController")
+		let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+//		let vc: ViewController = storyboard.instantiateViewController(identifier: "ViewController")
 		vc.url = self.incomingURL
 		self.window?.rootViewController = vc
 		self.window?.makeKeyAndVisible()
