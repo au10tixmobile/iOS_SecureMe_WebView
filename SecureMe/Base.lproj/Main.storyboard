@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,26 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8q-Pl-43W">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-5S-ssu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="z8q-Pl-43W" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8Py-l4-hpH"/>
-                            <constraint firstItem="z8q-Pl-43W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lb0-0l-LJM"/>
-                            <constraint firstItem="z8q-Pl-43W" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Pua-Bk-N20"/>
-                            <constraint firstAttribute="bottom" secondItem="z8q-Pl-43W" secondAttribute="bottom" id="lMP-Fz-g0m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XN4-5S-ssu" secondAttribute="bottom" id="BB3-AE-NAR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XN4-5S-ssu" secondAttribute="trailing" id="BGw-Ip-UtY"/>
+                            <constraint firstItem="XN4-5S-ssu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qwp-Nf-zJJ"/>
+                            <constraint firstItem="XN4-5S-ssu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rSI-Sa-3H7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="z8q-Pl-43W" id="pa1-I7-gHy"/>
+                        <outlet property="containerView" destination="XN4-5S-ssu" id="vzq-U5-tdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
