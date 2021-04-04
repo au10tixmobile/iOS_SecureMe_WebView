@@ -11,12 +11,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
-	var incomingURL: URL!
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		
-		
-		
 		return true
 	}
 	
@@ -29,18 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			let incomingURL = userActivity.webpageURL else {
 			return false
 		}
-		self.incomingURL = incomingURL
-		presentWKWebViewViewController()
-		return true
+        
+        guard let viewConroller = window?.rootViewController as? ViewController else{
+            return false
+        }
+        viewConroller.load(url: incomingURL)
+
+        return true
 	}
 
-	func presentWKWebViewViewController() {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-//		let vc: ViewController = storyboard.instantiateViewController(identifier: "ViewController")
-		vc.url = self.incomingURL
-		self.window?.rootViewController = vc
-		self.window?.makeKeyAndVisible()
-	}
 }
 

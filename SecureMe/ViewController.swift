@@ -13,15 +13,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var containerView: UIView!
     weak var webView: WKWebView!
 	
-	var url: URL!
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
+
+        createWebView()
+	}
+    
+    private func createWebView() {
         let configs = WKWebViewConfiguration()
-        configs.setValue(true, forKey: "_allowUniversalAccessFromFileURLs")
-        configs.preferences.javaScriptCanOpenWindowsAutomatically = true
-        configs.preferences.javaScriptEnabled = true
         
         let webView = WKWebView(frame: view.bounds, configuration: configs)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,14 +35,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         ].forEach { $0.isActive = true }
         
         self.webView = webView
-	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-        if let url = self.url {
-			webView.load(url.absoluteString) //"https://dev.10tix.me/CUu99zG6zne14FodO0Ut")
-		}
-	}
+    }
+    
+    func load(url: URL) {
+        webView.load(url.absoluteString) //"https://dev.10tix.me/CUu99zG6zne14FodO0Ut")
+    }
 	
 	func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
 		webView.reload()
