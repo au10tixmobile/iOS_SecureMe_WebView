@@ -13,6 +13,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var containerView: UIView!
     weak var webView: WKWebView!
 	
+    private var secureMeFinishedMessage: String { "secureMeFinished" }
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -21,6 +23,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     private func createWebView() {
         let configs = WKWebViewConfiguration()
+        configs.userContentController.add(self, name: secureMeFinishedMessage)
         
         let webView = WKWebView(frame: view.bounds, configuration: configs)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +41,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     func load(url: URL) {
-        webView.load(url.absoluteString) //"https://dev.10tix.me/CUu99zG6zne14FodO0Ut")
+        webView.load(URLRequest(url: url))
     }
 	
 	func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
@@ -46,11 +49,15 @@ class ViewController: UIViewController, WKNavigationDelegate {
 	}
 }
 
-extension WKWebView {
-	func load(_ urlString: String) {
-		if let url = URL(string: urlString) {
-			let request = URLRequest(url: url)
-			load(request)
-		}
-	}
+extension ViewController: WKScriptMessageHandler {
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        if message.name == "secureMeFinished" {
+            //handle the finish event
+            let obj = JSEventObj(dict: message.body as? [String:Any] ?? [:])
+        }
+        
+    }
+    
 }
