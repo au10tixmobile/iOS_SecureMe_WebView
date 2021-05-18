@@ -26,6 +26,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         configs.userContentController.add(self, name: secureMeFinishedMessage)
         
         let webView = WKWebView(frame: view.bounds, configuration: configs)
+        webView.customUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
         webView.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(webView)
