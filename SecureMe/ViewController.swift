@@ -23,6 +23,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     private func createWebView() {
         let configs = WKWebViewConfiguration()
+        configs.allowsInlineMediaPlayback = true
         configs.userContentController.add(self, name: secureMeFinishedMessage)
         
         let webView = WKWebView(frame: view.bounds, configuration: configs)
