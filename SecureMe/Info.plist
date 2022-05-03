@@ -35,10 +35,20 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NFCReaderUsageDescription</key>
+	<string>for testing</string>
 	<key>NSCameraUsageDescription</key>
-	<string>fgjklfehgkl  dkjgklf</string>
+	<string>Please allow</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Need to receive location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>please approve to use location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>dsagfhshghsgfh</string>
+	<string>we need the location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please allow</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library is needed to verify your identity</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
