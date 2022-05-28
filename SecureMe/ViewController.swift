@@ -22,8 +22,6 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func startButtonClicked(_ sender: UIButton) {
         if let text = textField.text, let url = URL(string: text) {
-            textField.resignFirstResponder()
-            startView.isHidden = true
             load(url: url)
         } else {
             let alert = UIAlertController(title: "Error", message: "Please enter correct URL", preferredStyle: .alert)
@@ -35,11 +33,13 @@ class ViewController: UIViewController {
     // MARK: - Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        textField.text = ""
+        textField.text = "https://qa.10tix.me/hDj19Oe3LCIPsUcj58t0"
         createWebView()
 	}
     
     func load(url: URL) {
+        textField.resignFirstResponder()
+        startView.isHidden = true
         webView.load(URLRequest(url: url))
     }
 }
