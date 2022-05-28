@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     // MARK: - Methods
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        textField.text = "https://qa.10tix.me/hDj19Oe3LCIPsUcj58t0"
+        textField.text = ""
         createWebView()
 	}
     
