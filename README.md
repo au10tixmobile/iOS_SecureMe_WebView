@@ -11,13 +11,6 @@ Verified, compliant and fraud-free onboarding results in 8 seconds (or less). By
 
 This example application presents an implementation suggestion for the Au10tix Secure.Me Web View App.
 
-The following integration examples are included:
-- Passive Face Liveness
-- Smart Document Capture
-- Proof of Address
-- UI components integration
-- Sending results to the backend
-
 ## Usage
 
 To use this sample you have to generate a link in the Au10tix Console. Paste a link and run the flow.
