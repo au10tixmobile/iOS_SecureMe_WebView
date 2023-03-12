@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let viewConroller = window?.rootViewController as? ViewController else{
             return false
         }
-        viewConroller.load(url: incomingURL)
+        
+        viewConroller.openExternalLink(url: incomingURL)
 
         return true
 	}

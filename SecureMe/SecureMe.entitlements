@@ -4,8 +4,10 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:secure-me.au10tixservicesqa.com</string>
 		<string>applinks:secure-me.au10tixservicesdev.com</string>
+		<string>applinks:secure-me.au10tixservices.com</string>
+		<string>applinks:secure-me.au10tixservicesstaging.com</string>
+		<string>applinks:secure-me.au10tixservicesqa.com</string>
 	</array>
 </dict>
 </plist>

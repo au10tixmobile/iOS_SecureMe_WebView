@@ -37,10 +37,15 @@ class ViewController: UIViewController {
         createWebView()
 	}
     
-    func load(url: URL) {
-        textField.resignFirstResponder()
-        startView.isHidden = true
-        webView.load(URLRequest(url: url))
+    func openExternalLink(url: URL) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.textField.text = url.absoluteString
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
+                guard let self = self else { return }
+                self.load(url: url)
+            }
+        }
     }
 }
 
@@ -61,6 +66,12 @@ private extension ViewController {
             webView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor)
         ].forEach { $0.isActive = true }
         self.webView = webView
+    }
+    
+    func load(url: URL) {
+        textField.resignFirstResponder()
+        startView.isHidden = true
+        webView.load(URLRequest(url: url))
     }
 }
 
