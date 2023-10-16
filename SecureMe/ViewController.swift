@@ -58,6 +58,7 @@ private extension ViewController {
         configs.userContentController.add(self, name: secureMeFinishedMessage)
         let webView = WKWebView(frame: view.bounds, configuration: configs)
         webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.uiDelegate = self
         containerView.addSubview(webView)
         [
             webView.topAnchor.constraint(equalTo: containerView.topAnchor),
@@ -103,4 +104,23 @@ extension ViewController: WKScriptMessageHandler {
             }
         }
     }
+}
+
+extension ViewController: WKUIDelegate {
+    
+    // Prevents showing a camera permission
+    
+    // Implement this delegate for iOS version strted from iOS 15.
+    @available(iOS 15.0, *)
+    func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
+        
+        decisionHandler(.grant)
+    }
+    
+    // A fallback implementation for iOS versions before iOS 15.
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        // Check if Camera Permissions requested.
+        decisionHandler(.allow)
+    }
+
 }
