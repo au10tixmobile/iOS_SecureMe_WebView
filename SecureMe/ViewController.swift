@@ -54,11 +54,21 @@ private extension ViewController {
     
     func createWebView() {
         let configs = WKWebViewConfiguration()
+        
+        // MARK: - Allows to play video. Essential setting.
         configs.allowsInlineMediaPlayback = true
         configs.userContentController.add(self, name: secureMeFinishedMessage)
+        
+        // MARK: - Script forces a camera popup to show at the flow start.
+        let userScript = WKUserScript(source: "navigator.mediaDevices.getUserMedia({ video: true })", injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        configs.userContentController.addUserScript(userScript)
+        
         let webView = WKWebView(frame: view.bounds, configuration: configs)
         webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // MARK: - Implement this delegate to handle a Media Capture Permission request
         webView.uiDelegate = self
+        
         containerView.addSubview(webView)
         [
             webView.topAnchor.constraint(equalTo: containerView.topAnchor),
@@ -110,17 +120,10 @@ extension ViewController: WKUIDelegate {
     
     // Prevents showing a camera permission
     
-    // Implement this delegate for iOS version strted from iOS 15.
+    // Implement this delegate for iOS version started from iOS 15.
     @available(iOS 15.0, *)
     func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
         
         decisionHandler(.grant)
     }
-    
-    // A fallback implementation for iOS versions before iOS 15.
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        // Check if Camera Permissions requested.
-        decisionHandler(.allow)
-    }
-
 }
