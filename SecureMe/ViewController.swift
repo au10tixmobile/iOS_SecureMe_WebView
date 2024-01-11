@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -82,8 +83,62 @@ private extension ViewController {
     func load(url: URL) {
         textField.resignFirstResponder()
         startView.isHidden = true
-        webView.load(URLRequest(url: url))
+        // Check camera access status before presenting the WKWebView
+        requestPermission { [weak self] status in
+            guard let self = self else { return }
+            switch status {
+            case .notDetermined, .restricted, .denied:
+                self.showPermissionDeniedAlert()
+            case .authorized:
+                self.webView.load(URLRequest(url: url))
+            @unknown default:
+                self.showPermissionDeniedAlert()
+            }
+        }
     }
+    
+    func requestPermission(_ completion:@escaping (AVAuthorizationStatus) -> ()) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        switch status {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    completion(granted == true ? .authorized : .denied)
+                }
+            }
+        case .restricted,
+                .denied,
+                .authorized:
+            completion(status)
+        @unknown default:
+            completion(status)
+        }
+    }
+    
+    func showPermissionDeniedAlert() {
+        let alert = UIAlertController(
+            title: "Camera Access Denied",
+            message: "To enable camera access, please go to Settings and allow access for this app.",
+            preferredStyle: .alert
+        )
+        
+        let settingsAction = UIAlertAction(title: "Open Settings", style: .default) { _ in
+            // Open the app's settings
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            // Handle cancel
+        }
+        
+        alert.addAction(settingsAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - WKNavigationDelegate
