@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,34 +52,6 @@
                                     <constraint firstItem="tPg-b1-1Uq" firstAttribute="leading" secondItem="W86-GQ-7jA" secondAttribute="leading" id="ukx-E0-sh4"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEG-Gb-30F">
-                                <rect key="frame" x="77" y="405.5" width="260" height="85.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8YD-hn-pF8">
-                                        <rect key="frame" x="92.5" y="51" width="75" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB6-ix-8yd">
-                                        <rect key="frame" x="0.0" y="0.0" width="260" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="260" id="19s-cf-3A9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="HB6-ix-8yd" secondAttribute="trailing" id="K3c-f7-OTk"/>
-                                    <constraint firstItem="HB6-ix-8yd" firstAttribute="top" secondItem="iEG-Gb-30F" secondAttribute="top" id="SAj-hF-BU8"/>
-                                    <constraint firstItem="8YD-hn-pF8" firstAttribute="centerX" secondItem="iEG-Gb-30F" secondAttribute="centerX" id="cbZ-gY-MQM"/>
-                                    <constraint firstAttribute="bottom" secondItem="8YD-hn-pF8" secondAttribute="bottom" id="mEj-DU-aWF"/>
-                                    <constraint firstItem="HB6-ix-8yd" firstAttribute="leading" secondItem="iEG-Gb-30F" secondAttribute="leading" id="r67-Wz-TS9"/>
-                                    <constraint firstItem="8YD-hn-pF8" firstAttribute="top" secondItem="HB6-ix-8yd" secondAttribute="bottom" constant="30" id="ytj-iC-viZ"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -88,9 +60,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XN4-5S-ssu" secondAttribute="bottom" id="BB3-AE-NAR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XN4-5S-ssu" secondAttribute="trailing" id="BGw-Ip-UtY"/>
                             <constraint firstItem="XN4-5S-ssu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qwp-Nf-zJJ"/>
-                            <constraint firstItem="iEG-Gb-30F" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SKE-GO-2hS"/>
                             <constraint firstItem="W86-GQ-7jA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZVE-yH-tep"/>
-                            <constraint firstItem="iEG-Gb-30F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gaP-eR-nuc"/>
                             <constraint firstItem="XN4-5S-ssu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rSI-Sa-3H7"/>
                         </constraints>
                     </view>
