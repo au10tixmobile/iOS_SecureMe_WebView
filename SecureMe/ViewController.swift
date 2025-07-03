@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 import AVKit
 
 class ViewController: UIViewController {
@@ -69,6 +69,9 @@ private extension ViewController {
         
         // MARK: - Implement this delegate to handle a Media Capture Permission request
         webView.uiDelegate = self
+        if #available(iOS 16.4, *) {
+            webView.isInspectable = true
+        }
         
         containerView.addSubview(webView)
         [
